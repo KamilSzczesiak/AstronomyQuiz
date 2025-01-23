@@ -1,0 +1,94 @@
+{
+  "questions": [
+    {
+      "question": "What was the first artificial satellite to orbit Earth?",
+      "options": ["Voyager 1", "Sputnik 1", "Apollo 11", "Hubble Telescope"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Who was the first human to walk on the Moon?",
+      "options": ["Yuri Gagarin", "Buzz Aldrin", "Neil Armstrong", "John Glenn"],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "Which planet is known as the 'Red Planet'?",
+      "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "What is the largest planet in our solar system?",
+      "options": ["Saturn", "Jupiter", "Uranus", "Neptune"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "What is the name of NASA’s most famous space telescope?",
+      "options": ["Kepler", "Webb", "Hubble", "Spitzer"],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "Which country first landed a spacecraft on the far side of the Moon?",
+      "options": ["USA", "China", "Russia", "India"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "How many moons does Mars have?",
+      "options": ["1", "2", "3", "4"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "What does 'ISS' stand for in space exploration?",
+      "options": ["International Space Station", "Intergalactic Space Station", "Independent Satellite System", "Interstellar Station"],
+      "correctOption": 0,
+      "points": 10
+    },
+    {
+      "question": "What is the name of the first rover that successfully landed on Mars?",
+      "options": ["Opportunity", "Sojourner", "Curiosity", "Perseverance"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "What is the main purpose of the James Webb Space Telescope?",
+      "options": ["To detect asteroids", "To study exoplanets and early galaxies", "To map Earth’s surface", "To monitor weather patterns on Jupiter"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "The Milky Way is a spiral galaxy.",
+      "options": ["True", "False"],
+      "correctOption": 0,
+      "points": 10
+    },
+    {
+      "question": "The Sun is the largest star in the universe.",
+      "options": ["True", "False"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Space has no gravity.",
+      "options": ["True", "False"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "The closest star to Earth, besides the Sun, is ________.",
+      "options": ["Alpha Centauri", "Proxima Centauri", "Sirius", "Betelgeuse"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "The Apollo program was designed by NASA to land humans on the ________.",
+      "options": ["Moon", "Mars", "International Space Station", "Sun"],
+      "correctOption": 0,
+      "points": 20
+    }
+  ]
+}
