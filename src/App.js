@@ -37,16 +37,17 @@ function App() {
   const [showNextButton, setShowNextButton] = useState(false);
   const [buttonStyles, setButtonStyles] = useState({}); 
   const [disableButtons, setDisableButtons] = useState(false); 
-  const [selectedAnswers, setSelectedAnswers] = useState([]); // Allow multiple selections
+  const [selectedAnswers, setSelectedAnswers] = useState([]); 
   const [isChecked, setIsChecked] = useState(false);
-  const [quizFinished, setQuizFinished] = useState(false); // Track quiz completion
-  const [showStartScreen, setShowStartScreen] = useState(true); // Track if the start screen is shown
-  const [shuffledQuestions, setShuffledQuestions] = useState([]); // Track shuffled questions
+  const [quizFinished, setQuizFinished] = useState(false);
+  const [showStartScreen, setShowStartScreen] = useState(true);
+  const [shuffledQuestions, setShuffledQuestions] = useState([]);
+
+  const maxScore = shuffledQuestions.length;
 
   useEffect(() => {
-    if (quizFinished) return; // Prevent resetting when the quiz is finished
+    if (quizFinished) return;
 
-    // Shuffle quizData when starting the quiz
     const shuffle = (array) => {
       const shuffled = [...array];
       for (let i = shuffled.length - 1; i > 0; i--) {
@@ -56,43 +57,42 @@ function App() {
       return shuffled;
     };
 
-    setShuffledQuestions(shuffle(quizData)); // Shuffle questions
+    setShuffledQuestions(shuffle(quizData)); 
     setCurrentQuestionIndex(0);
     setScore(0);
-    setAnsweredQuestions([]);
-    setUserAnswers([]);
+    setAnsweredQuestions([]); 
+    setUserAnswers([]); 
     setFeedback("");  
     setShowNextButton(false);  
     setButtonStyles({});  
     setDisableButtons(false); 
-    setSelectedAnswers([]); // Reset selected answers
+    setSelectedAnswers([]); 
     setIsChecked(false); 
   }, [quizFinished]);
 
+  const progress = (score / maxScore) * 100;
+  const percentageScore = Math.round(progress);  // This gives you the percentage score
+
   const handleAnswer = (answer) => {
-    // For normal (single-choice) questions, overwrite the answer with the new selection
     if (currentQuestion.type !== "multiple-answer") {
-      setSelectedAnswers([answer]); // Replace the previous answer with the new one
+      setSelectedAnswers([answer]);
     } else {
-      // For multiple-answer questions, allow multiple selections
       const updatedSelectedAnswers = [...selectedAnswers];
       if (updatedSelectedAnswers.includes(answer)) {
-        // Deselect the answer if already selected
         const index = updatedSelectedAnswers.indexOf(answer);
         updatedSelectedAnswers.splice(index, 1);
       } else if (updatedSelectedAnswers.length < currentQuestion.correct.length) {
-        // Add the answer if not already selected and limit the number of selections
         updatedSelectedAnswers.push(answer);
       }
       setSelectedAnswers(updatedSelectedAnswers);
     }
-  };  
+  };
 
   const handleCheck = () => {
     const question = shuffledQuestions[currentQuestionIndex];
     let newScore = score;
     let newFeedback = "";
-    let newButtonStyles = {};  // Clear button styles before applying new ones
+    let newButtonStyles = {}; 
 
     setDisableButtons(true);
     setIsChecked(true);
@@ -100,7 +100,6 @@ function App() {
     const correctAnswers = question.correct;
     const isMultipleChoice = Array.isArray(correctAnswers);
 
-    // Check if the selected answers are correct
     if (isMultipleChoice) {
       const correctCount = selectedAnswers.filter(answer => correctAnswers.includes(answer)).length;
       if (correctCount === correctAnswers.length && selectedAnswers.length === correctAnswers.length) {
@@ -110,7 +109,6 @@ function App() {
         newFeedback = `Incorrect! You selected: "${selectedAnswers.join(", ")}". The correct answers are: "${correctAnswers.join(", ")}".`;
       }
 
-      // Highlight the correct answers in green, and the incorrect ones in red
       correctAnswers.forEach(answer => {
         newButtonStyles[answer] = { backgroundColor: "green" };
       });
@@ -180,31 +178,93 @@ function App() {
         <button className="start-button" onClick={handleStartQuiz}>Start Quiz</button>
       </div>
     );
-  };  
+  };
 
   return (
     <div className="quiz-container">
+      {/* Conditionally render the score circle only if the quiz is finished */}
+      {quizFinished && (
+  <div className="score-moon">
+    <div className="score">
+    <svg
+  width="200"
+  height="200"
+  viewBox="0 0 200 200"
+  xmlns="http://www.w3.org/2000/svg"
+  className="circle-progress"
+>
+  <circle
+    cx="100"
+    cy="100"
+    r="90"
+    stroke="lightgray"
+    strokeWidth="15"
+    fill="none"
+  />
+  <circle
+    cx="100"
+    cy="100"
+    r="90"
+    stroke="#00b3b3"
+    strokeWidth="15"
+    fill="none"
+    strokeDasharray="565.48"
+    strokeDashoffset={565.48 - (progress / 100) * 565.48}
+    transform="rotate(-90 100 100)"
+  />
+  <text
+    x="50%"
+    y="50%"
+    textAnchor="middle"
+    dy="-0.3em"
+    fontSize="30"
+    fill="white"
+  >
+    {percentageScore}%
+  </text>
+  <text
+    x="50%"
+    y="50%"
+    textAnchor="middle"
+    dy="0.5em"
+    fontSize="20"
+    fill="white"
+  >
+    {score} / {maxScore}
+  </text>
+</svg>
+
+    </div>
+    </div>
+)}
+
       {!quizFinished ? (
         <>
           <h2>Question {currentQuestionIndex + 1}</h2>
           <p>{currentQuestion.question}</p>
           {displayAnswerCount()}
-
+  
           {currentQuestion.type === "true-false" && (
             <>
               <button
                 className={selectedAnswers.includes("true") ? "selected" : ""}
-                style={buttonStyles["true"]} 
-                onClick={() => handleAnswer("true")} 
-                disabled={disableButtons}>True</button>
+                style={buttonStyles["true"]}
+                onClick={() => handleAnswer("true")}
+                disabled={disableButtons}
+              >
+                True
+              </button>
               <button
                 className={selectedAnswers.includes("false") ? "selected" : ""}
-                style={buttonStyles["false"]} 
-                onClick={() => handleAnswer("false")} 
-                disabled={disableButtons}>False</button>
+                style={buttonStyles["false"]}
+                onClick={() => handleAnswer("false")}
+                disabled={disableButtons}
+              >
+                False
+              </button>
             </>
           )}
-
+  
           {currentQuestion.type === "multiple-choice" && (
             <>
               {currentQuestion.options.map((option, index) => (
@@ -213,13 +273,14 @@ function App() {
                   className={selectedAnswers.includes(option) ? "selected" : ""}
                   style={buttonStyles[option]}
                   onClick={() => handleAnswer(option)}
-                  disabled={disableButtons}>
+                  disabled={disableButtons}
+                >
                   {option}
                 </button>
               ))}
             </>
           )}
-
+  
           {currentQuestion.type === "multiple-answer" && (
             <>
               {currentQuestion.options.map((option, index) => (
@@ -228,33 +289,75 @@ function App() {
                   className={selectedAnswers.includes(option) ? "selected" : ""}
                   style={buttonStyles[option]}
                   onClick={() => handleAnswer(option)}
-                  disabled={disableButtons}>
+                  disabled={disableButtons}
+                >
                   {option}
                 </button>
               ))}
             </>
           )}
-
-          {isChecked && <p className="feedback">{feedback}</p>} 
-
+  
+          {isChecked && <p className="feedback">{feedback}</p>}
+  
           {!isChecked && selectedAnswers.length > 0 && (
             <button className="check-button" onClick={handleCheck}>
               Check
             </button>
           )}
+  
+  {showNextButton && (
+  <button className="next-button" onClick={handleNext}>
+    {currentQuestionIndex === shuffledQuestions.length - 1 ? "Finish" : "Next"}
+  </button>
+)}
 
-          {showNextButton && (
-            <button className="next-button" onClick={handleNext}>
-              Next
-            </button>
-          )}
         </>
       ) : (
         <div className="end-screen">
           <div className="score-moon">
-            <span>Score: {score}/{shuffledQuestions.length}</span>
+            <div className="score">
+              <svg
+                width="300"
+                height="300"
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+                className="circle-progress"
+              >
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="90"
+                  stroke="lightgray"
+                  strokeWidth="15"
+                  fill="none"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="90"
+                  stroke="#00b3b3"
+                  strokeWidth="15"
+                  fill="none"
+                  strokeDasharray="565.48"
+                  strokeDashoffset={565.48 - (percentageScore / 100) * 565.48}
+                  transform="rotate(-90 100 100)"
+                />
+                <text
+                  x="50%"
+                  y="50%"
+                  textAnchor="middle"
+                  dy=".3em"
+                  fontSize="30"
+                  fill="white"
+                >
+                  {percentageScore}%
+                </text>
+              </svg>
+            </div>
           </div>
-          <button className="reset-button" onClick={handleResetQuiz}>Go Back to Menu</button>
+          <button className="reset-button" onClick={handleResetQuiz}>
+            Go Back to Menu
+          </button>
         </div>
       )}
     </div>
