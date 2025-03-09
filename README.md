@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Welcome to my Online Quiz Project Website!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This project is a Online Astronomy Quiz Website to demenstrate my skills and experience
 
-## Available Scripts
+ ### Approach
+ How did I approach the brief?
+ I began by planning what theme I'm going to go for. In this case I chose astronomy as that's a topic I enjoy. I then planned out what questions I'm going to ask and the layout of the quiz.
 
-In the project directory, you can run:
+ Biggest challenge?
+ The biggest challenge in the developing of this project was implementing the different types of questions. I particularly found it challenging to include the multiple-answer type questions.
 
-### `npm start`
+ ### Screenshots
+ #### Start Screen
+https://imgur.com/JZfMbp8
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Standard Question
+https://imgur.com/63JbT96
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### True / False Question
+https://imgur.com/QVI0m4Q
 
-### `npm test`
+#### Multi-Answer Question
+https://imgur.com/9qcujeB
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Correct Answer
+https://imgur.com/fimi6m4
 
-### `npm run build`
+#### Incorrect Answer
+https://imgur.com/undefined
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Score Screen
+https://imgur.com/pYVKPdv
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ ### Future Improvements
+ If I had more time and better resources, how would I change or improve this project?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ If I did have more time, I'd like to spend more time on creating a nicer design and layout, perhaps go for less background images and make it look a bit more professional. If I had more time I would also like to implement a highscore perhaps, so users can locally challenge themselves to improve. In addition to that, adding a 'pass rate' could also be an option, so that the user needs to get above a certain amount to pass. Something else I could do could maybe be organising the files better, and seperating the code for better readability and reusability.
 
-### `npm run eject`
+ ### Resources
+ Here are the resources I have used to help me with the creation of this project:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ For NASA images: https://www.flickr.com/photos/nasahqphoto/albums/72177720322891732/with/54028334454
