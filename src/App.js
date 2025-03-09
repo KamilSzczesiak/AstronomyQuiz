@@ -70,18 +70,23 @@ function App() {
   }, [quizFinished]);
 
   const handleAnswer = (answer) => {
-    const updatedSelectedAnswers = [...selectedAnswers];
-    if (updatedSelectedAnswers.includes(answer)) {
-      // Deselect the answer if already selected
-      const index = updatedSelectedAnswers.indexOf(answer);
-      updatedSelectedAnswers.splice(index, 1);
-    } else if (updatedSelectedAnswers.length < shuffledQuestions[currentQuestionIndex].correct.length) {
-      // Add the answer if not already selected and limit the number of selections
-      updatedSelectedAnswers.push(answer);
+    // For normal (single-choice) questions, overwrite the answer with the new selection
+    if (currentQuestion.type !== "multiple-answer") {
+      setSelectedAnswers([answer]); // Replace the previous answer with the new one
+    } else {
+      // For multiple-answer questions, allow multiple selections
+      const updatedSelectedAnswers = [...selectedAnswers];
+      if (updatedSelectedAnswers.includes(answer)) {
+        // Deselect the answer if already selected
+        const index = updatedSelectedAnswers.indexOf(answer);
+        updatedSelectedAnswers.splice(index, 1);
+      } else if (updatedSelectedAnswers.length < currentQuestion.correct.length) {
+        // Add the answer if not already selected and limit the number of selections
+        updatedSelectedAnswers.push(answer);
+      }
+      setSelectedAnswers(updatedSelectedAnswers);
     }
-
-    setSelectedAnswers(updatedSelectedAnswers);
-  };
+  };  
 
   const handleCheck = () => {
     const question = shuffledQuestions[currentQuestionIndex];
