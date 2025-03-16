@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/AstronomyQuiz/static/css/main.ed97c8a0.css",
-    "main.js": "/AstronomyQuiz/static/js/main.24d12ced.js",
+    "main.js": "/AstronomyQuiz/static/js/main.96072dfa.js",
     "static/js/453.5a5d9f78.chunk.js": "/AstronomyQuiz/static/js/453.5a5d9f78.chunk.js",
     "index.html": "/AstronomyQuiz/index.html",
     "main.ed97c8a0.css.map": "/AstronomyQuiz/static/css/main.ed97c8a0.css.map",
-    "main.24d12ced.js.map": "/AstronomyQuiz/static/js/main.24d12ced.js.map",
+    "main.96072dfa.js.map": "/AstronomyQuiz/static/js/main.96072dfa.js.map",
     "453.5a5d9f78.chunk.js.map": "/AstronomyQuiz/static/js/453.5a5d9f78.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ed97c8a0.css",
-    "static/js/main.24d12ced.js"
+    "static/js/main.96072dfa.js"
   ]
 }
