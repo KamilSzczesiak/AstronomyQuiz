@@ -46,6 +46,7 @@ function App() {
   const maxScore = shuffledQuestions.length;
 
   useEffect(() => {
+    document.title = "Astronomy Quiz";
     if (quizFinished) return;
 
     const shuffle = (array) => {
